@@ -1,0 +1,126 @@
+@import "tailwindcss";
+
+@theme {
+  --color-eibm-royal: #005BAA;      /* Deep Royal Blue */
+  --color-eibm-navy: #0B1F45;       /* Navy Blue */
+  --color-eibm-sky: #00AEEF;        /* Accent Sky Blue */
+  --color-eibm-glass: rgba(255, 255, 255, 0.04);
+  
+  --font-serif: "Instrument Serif", serif;
+  --font-sans: "Inter", sans-serif;
+  
+  --animate-float-slow: floatSlow 8s ease-in-out infinite;
+  --animate-float-medium: floatMedium 6s ease-in-out infinite;
+  --animate-float-fast: floatFast 4s ease-in-out infinite;
+
+  @keyframes floatSlow {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-15px) rotate(1deg); }
+  }
+  @keyframes floatMedium {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-10px) rotate(-1.5deg); }
+  }
+  @keyframes floatFast {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-8px) rotate(0.8deg); }
+  }
+}
+
+/* Custom styles */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #040B1A; /* EIBM dark background */
+}
+
+/* Liquid Glass Utility */
+.liquid-glass {
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.25),
+    inset 0 1px 1px rgba(255, 255, 255, 0.18);
+  overflow: hidden;
+  position: relative;
+}
+
+.liquid-glass::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.45),
+    rgba(255, 255, 255, 0.12),
+    rgba(255, 255, 255, 0),
+    rgba(255, 255, 255, 0.12),
+    rgba(255, 255, 255, 0.45)
+  );
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+/* EIBM Glow Animation and Utilities */
+.btn-glow {
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-glow:hover {
+  box-shadow: 0 0 25px rgba(0, 91, 170, 0.5);
+  border-color: rgba(0, 174, 239, 0.5);
+  transform: translateY(-2px) scale(1.03);
+}
+
+/* Custom Text Masks and Fade Reveals */
+@keyframes fadeRise {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-rise {
+  animation: fadeRise 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-fade-rise-delay-1 {
+  opacity: 0;
+  animation: fadeRise 1s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
+}
+
+.animate-fade-rise-delay-2 {
+  opacity: 0;
+  animation: fadeRise 1s cubic-bezier(0.16, 1, 0.3, 1) 0.6s forwards;
+}
+
+.animate-fade-down {
+  opacity: 0;
+  animation: fadeRise 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation-name: fadeDown;
+}
+
+@keyframes fadeDown {
+  from {
+    opacity: 0;
+    transform: translateY(-15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
