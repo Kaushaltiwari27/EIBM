@@ -54,7 +54,7 @@ export const TrustBar: React.FC = () => {
 
   const stats = [
     { value: '5000+', label: 'Students trained', icon: <Users className="text-eibm-sky" size={28} /> },
-    { value: '100+', label: 'Ventuers started', icon: <Award className="text-eibm-sky" size={28} /> },
+    { value: '100+', label: 'Ventures started', icon: <Award className="text-eibm-sky" size={28} /> },
     { value: '15 Days', label: 'Practical course', icon: <Calendar className="text-eibm-sky" size={28} /> },
     { value: 'Lifetime', label: 'Business support', icon: <Infinity className="text-eibm-sky" size={28} /> },
   ];
