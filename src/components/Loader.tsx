@@ -10,22 +10,22 @@ export const Loader: React.FC<LoaderProps> = ({ onComplete }) => {
   const [fadeOut, setFadeOut] = useState(false);
 
   useEffect(() => {
-    // Easing progression simulation to feel organic/spring-like
+    // Fast progression simulation for instant responsiveness
     const interval = setInterval(() => {
       setProgress((prev) => {
         if (prev >= 100) {
           clearInterval(interval);
           setTimeout(() => {
             setFadeOut(true);
-            setTimeout(onComplete, 800); // Wait for fade-out transition
-          }, 400);
+            setTimeout(onComplete, 300); // Quick fade-out transition
+          }, 100);
           return 100;
         }
-        // Organic slowing down as it reaches the end
-        const increment = Math.max(1, Math.floor((100 - prev) * 0.15));
+        // Rapid organic increment
+        const increment = Math.max(4, Math.floor((100 - prev) * 0.25));
         return Math.min(100, prev + increment);
       });
-    }, 85);
+    }, 16);
 
     return () => clearInterval(interval);
   }, [onComplete]);

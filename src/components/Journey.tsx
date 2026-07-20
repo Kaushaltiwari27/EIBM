@@ -129,22 +129,29 @@ export const Journey: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    let ticking = false;
     const handleScroll = () => {
-      if (!containerRef.current) return;
-      const rect = containerRef.current.getBoundingClientRect();
-      const windowHeight = window.innerHeight;
-      
-      const totalHeight = rect.height;
-      const scrolledPast = windowHeight / 2 - rect.top;
-      
-      let percentage = scrolledPast / totalHeight;
-      if (percentage < 0) percentage = 0;
-      if (percentage > 1) percentage = 1;
-      
-      setScrollHeight(percentage * 100);
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          if (containerRef.current) {
+            const rect = containerRef.current.getBoundingClientRect();
+            const windowHeight = window.innerHeight;
+            const totalHeight = rect.height;
+            const scrolledPast = windowHeight / 2 - rect.top;
+            
+            let percentage = scrolledPast / totalHeight;
+            if (percentage < 0) percentage = 0;
+            if (percentage > 1) percentage = 1;
+            
+            setScrollHeight(percentage * 100);
+          }
+          ticking = false;
+        });
+        ticking = true;
+      }
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);

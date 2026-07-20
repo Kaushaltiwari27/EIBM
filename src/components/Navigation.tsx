@@ -6,14 +6,17 @@ export const Navigation: React.FC = () => {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
+    let ticking = false;
     const handleScroll = () => {
-      if (window.scrollY > 40) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          setScrolled(window.scrollY > 40);
+          ticking = false;
+        });
+        ticking = true;
       }
     };
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 

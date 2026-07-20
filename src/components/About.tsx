@@ -133,23 +133,29 @@ export const About: React.FC = () => {
   }, []);
 
   useEffect(() => {
+    let ticking = false;
     const handleScroll = () => {
-      if (!timelineRef.current) return;
-      const rect = timelineRef.current.getBoundingClientRect();
-      const windowHeight = window.innerHeight;
-      
-      // Calculate scroll progress percentage through the timeline container bounds
-      const totalHeight = rect.height;
-      const scrolledPast = windowHeight / 2 - rect.top;
-      
-      let percentage = scrolledPast / totalHeight;
-      if (percentage < 0) percentage = 0;
-      if (percentage > 1) percentage = 1;
-      
-      setScrollHeight(percentage * 100);
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          if (timelineRef.current) {
+            const rect = timelineRef.current.getBoundingClientRect();
+            const windowHeight = window.innerHeight;
+            const totalHeight = rect.height;
+            const scrolledPast = windowHeight / 2 - rect.top;
+            
+            let percentage = scrolledPast / totalHeight;
+            if (percentage < 0) percentage = 0;
+            if (percentage > 1) percentage = 1;
+            
+            setScrollHeight(percentage * 100);
+          }
+          ticking = false;
+        });
+        ticking = true;
+      }
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
