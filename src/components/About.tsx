@@ -27,6 +27,8 @@ const TimelineNode: React.FC<TimelineNodeProps> = ({ year, title, description, a
     return () => observer.disconnect();
   }, []);
 
+  const isLeft = align === 'left';
+
   return (
     <div
       ref={nodeRef}
@@ -47,16 +49,16 @@ const TimelineNode: React.FC<TimelineNodeProps> = ({ year, title, description, a
       {/* Grid container */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 w-full pl-10 md:pl-0">
         
-        {/* Left Column */}
+        {/* Left Column (Desktop Left side of timeline) */}
         <div 
-          className={`flex flex-col ${align === 'left' ? 'md:items-end md:text-right' : 'md:items-start md:text-left order-2 md:order-1'}`}
+          className="flex flex-col md:items-end md:text-right"
           style={{
             opacity: inView ? 1 : 0,
-            transform: inView ? 'translate3d(0, 0, 0)' : `translate3d(${align === 'left' ? '-40px' : '40px'}, 0, 0)`,
+            transform: inView ? 'translate3d(0, 0, 0)' : `translate3d(${isLeft ? '-40px' : '40px'}, 0, 0)`,
             transition: 'all 0.8s cubic-bezier(0.16, 1, 0.3, 1)',
           }}
         >
-          {align === 'left' ? (
+          {isLeft ? (
             <div className="w-full max-w-md">
               <div className="liquid-glass p-6 md:p-8 rounded-3xl border border-eibm-sky/15 bg-white/75 backdrop-blur-md hover:border-eibm-sky/35 transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
                 <span className="text-xs font-bold text-eibm-sky mb-1 block select-none md:hidden">{year}</span>
@@ -74,16 +76,16 @@ const TimelineNode: React.FC<TimelineNodeProps> = ({ year, title, description, a
           )}
         </div>
 
-        {/* Right Column */}
+        {/* Right Column (Desktop Right side of timeline) */}
         <div 
-          className={`flex flex-col ${align === 'right' ? 'md:items-start md:text-left' : 'md:items-end md:text-right order-1 md:order-2'}`}
+          className="flex flex-col md:items-start md:text-left"
           style={{
             opacity: inView ? 1 : 0,
-            transform: inView ? 'translate3d(0, 0, 0)' : `translate3d(${align === 'right' ? '40px' : '-40px'}, 0, 0)`,
+            transform: inView ? 'translate3d(0, 0, 0)' : `translate3d(${!isLeft ? '40px' : '-40px'}, 0, 0)`,
             transition: 'all 0.8s cubic-bezier(0.16, 1, 0.3, 1)',
           }}
         >
-          {align === 'right' ? (
+          {!isLeft ? (
             <div className="w-full max-w-md">
               <div className="liquid-glass p-6 md:p-8 rounded-3xl border border-eibm-sky/15 bg-white/75 backdrop-blur-md hover:border-eibm-sky/35 transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
                 <span className="text-xs font-bold text-eibm-sky mb-1 block select-none md:hidden">{year}</span>
@@ -264,13 +266,13 @@ export const About: React.FC = () => {
             className="absolute left-[16px] md:left-1/2 transform -translate-x-1/2 w-0.5 max-h-[96%] bg-gradient-to-b from-eibm-royal via-eibm-sky to-eibm-sky shadow-[0_0_8px_rgba(0,174,239,0.6)] rounded-full transition-all duration-150 ease-out" 
           />
           
-          {timelineEvents.map((evt) => (
+          {timelineEvents.map((evt, idx) => (
             <TimelineNode 
               key={evt.title}
               year={evt.year}
               title={evt.title}
               description={evt.description}
-              align={evt.align}
+              align={idx % 2 === 0 ? 'left' : 'right'}
             />
           ))}
         </div>
