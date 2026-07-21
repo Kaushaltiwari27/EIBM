@@ -212,31 +212,32 @@ export const Contact: React.FC = () => {
             </div>
           </div>
 
-          {/* Right Column: Branches & Contacts (6 Cols) */}
+          {/* Right Column: Corporate HQ & Contacts (6 Cols) */}
           <div className="lg:col-span-6 space-y-6">
             <h3 className="text-lg font-bold text-eibm-sky uppercase tracking-wider mb-2 select-none">
-              EIBM Campuses & Hubs
+              Corporate Headquarters
             </h3>
 
-            {/* Branch Cards */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              {[
-                { name: 'Surat Campus', addr: '402 Golden Trade Center, Majura Gate, Surat', phone: '+91 98765 43210' },
-                { name: 'Ahmedabad Campus', addr: '708 Synergy Business Park, SG Highway, Ahmedabad', phone: '+91 98765 43211' },
-                { name: 'Rajkot Campus', addr: '302 Royal Commerce Hub, Yagnik Road, Rajkot', phone: '+91 98765 43212' },
-              ].map((b) => (
-                <div key={b.name} className="liquid-glass p-5 rounded-2xl border border-white/10 bg-slate-950/20">
-                  <h4 className="text-sm font-bold text-white font-serif tracking-tight">{b.name}</h4>
-                  <p className="text-[11px] text-slate-400 mt-2 font-light leading-relaxed flex items-start gap-1">
-                    <MapPin size={12} className="text-eibm-sky shrink-0 mt-0.5" />
-                    <span>{b.addr}</span>
-                  </p>
-                  <p className="text-[11px] text-eibm-sky mt-2 font-semibold flex items-center gap-1">
-                    <Phone size={10} />
-                    <span>{b.phone}</span>
-                  </p>
-                </div>
-              ))}
+            {/* Main Headquarters Card */}
+            <div className="liquid-glass p-6 rounded-3xl border border-white/10 bg-slate-950/30 space-y-3">
+              <div className="flex items-center justify-between">
+                <h4 className="text-base font-bold text-white font-serif tracking-tight">
+                  Eveg International Private Limited <span className="text-xs text-eibm-sky font-normal block md:inline">(Eveg Group)</span>
+                </h4>
+                <span className="px-3 py-1 text-[10px] font-semibold bg-eibm-sky/15 text-eibm-sky border border-eibm-sky/30 rounded-full shrink-0">
+                  Headquarters
+                </span>
+              </div>
+              <p className="text-xs text-slate-300 font-light leading-relaxed flex items-start gap-2">
+                <MapPin size={16} className="text-eibm-sky shrink-0 mt-0.5" />
+                <span>The Palladium Mall, 4007, Savlia Circle, near Vijaynagar, Yogi Chowk Ground, Chikuwadi, Nana Varachha, Surat, Gujarat 395010</span>
+              </p>
+              <div className="flex flex-wrap gap-4 pt-2 border-t border-white/5 text-xs font-medium text-slate-300">
+                <p className="flex items-center gap-1.5 text-eibm-sky">
+                  <Phone size={14} />
+                  <span>+91 76988 41150 / +91 97269 08411</span>
+                </p>
+              </div>
             </div>
 
             {/* Contacts & Quick actions */}
@@ -253,13 +254,15 @@ export const Contact: React.FC = () => {
               
               <div className="flex gap-3 w-full md:w-auto">
                 <a
-                  href="https://wa.me/919876543210"
+                  href="https://wa.me/917698841150"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="flex-1 md:flex-initial text-center px-6 py-3 rounded-full bg-[#25D366] text-white text-xs font-semibold hover:opacity-90 shadow-md select-none"
                 >
                   WhatsApp Now
                 </a>
                 <a
-                  href="tel:+919876543210"
+                  href="tel:+917698841150"
                   className="flex-1 md:flex-initial text-center px-6 py-3 rounded-full bg-eibm-sky text-white text-xs font-semibold hover:opacity-90 shadow-md select-none"
                 >
                   Call Now
@@ -270,13 +273,13 @@ export const Contact: React.FC = () => {
             {/* Interactive Map Iframe wrapper */}
             <div className="relative rounded-3xl overflow-hidden border border-white/10 h-64 shadow-2xl select-none">
               <iframe 
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14879.790906297312!2d72.82522770857317!3d21.19422894541577!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be04e6c3820c78b%3A0xc48c08ecb8fa5ee8!2sMajura%20Gate%2C%20Surat%2C%20Gujarat%20395002!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" 
+                src="https://maps.google.com/maps?q=The+Palladium+Mall,+Yogi+Chowk,+Nana+Varachha,+Surat,+Gujarat+395010&t=&z=16&ie=UTF8&iwloc=&output=embed" 
                 width="100%" 
                 height="100%" 
                 style={{ border: 0 }} 
                 allowFullScreen={true} 
                 loading="lazy" 
-                title="EIBM Surat Location">
+                title="Eveg International Private Limited Surat Location">
               </iframe>
             </div>
 

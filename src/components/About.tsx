@@ -165,7 +165,7 @@ export const About: React.FC = () => {
     { year: '2018', title: 'Built Export Company', description: 'Established a commercial export house shipping textiles and agricultural goods directly from ports across Gujarat.', align: 'right' as const },
     { year: '2020', title: 'International Business', description: 'Scaled cargo trade contracts to 12+ European and Middle-Eastern countries, securing direct banking trade credit.', align: 'left' as const },
     { year: '2022', title: '5000+ Students', description: 'Launched EIBM to share practical frameworks, helping over 5,000 students escape textbook theories.', align: 'right' as const },
-    { year: '2024', title: 'Business Expansion', description: 'Opened corporate campuses in Ahmedabad and Rajkot, forging strategic alliances with local shipping lines.', align: 'left' as const },
+    { year: '2024', title: 'Business Expansion', description: 'Expanded corporate headquarters in Surat, forging strategic alliances with global trade networks & shipping lines.', align: 'left' as const },
     { year: '2026', title: 'Lifetime Mentorship', description: 'Pioneered India\'s first active Export Club program, supporting alumni ventures through direct custom clearances.', align: 'right' as const },
   ];
 

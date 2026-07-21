@@ -197,7 +197,7 @@ export const SuccessStories: React.FC = () => {
                 <div className="flex justify-between items-start mb-4">
                   <div>
                     <h5 className="text-sm font-bold text-white font-serif">Kajal Desai</h5>
-                    <span className="text-[10px] text-slate-500 block">Rajkot Alumni</span>
+                    <span className="text-[10px] text-slate-500 block">Surat Alumni</span>
                   </div>
                   <div className="flex gap-0.5 text-yellow-500">
                     {[...Array(5)].map((_, i) => <Star key={i} size={12} fill="currentColor" />)}
@@ -213,7 +213,7 @@ export const SuccessStories: React.FC = () => {
                 <div className="flex justify-between items-start mb-4">
                   <div>
                     <h5 className="text-sm font-bold text-white font-serif">Manish Shah</h5>
-                    <span className="text-[10px] text-slate-500 block">Ahmedabad Alumni</span>
+                    <span className="text-[10px] text-slate-500 block">Gujarat Alumni</span>
                   </div>
                   <div className="flex gap-0.5 text-yellow-500">
                     {[...Array(5)].map((_, i) => <Star key={i} size={12} fill="currentColor" />)}

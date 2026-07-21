@@ -61,7 +61,7 @@ export const PracticalExposure: React.FC = () => {
     {
       title: 'Factory Sourcing Meetups',
       category: 'Field Experience',
-      description: 'Visit manufacturing and ceramic production floors in Rajkot/Morbi to understand export quality sorting and wholesale deal negotiations.',
+      description: 'Visit manufacturing and ceramic production floors in Surat/Morbi to understand export quality sorting and wholesale deal negotiations.',
       image: '/images/factory_floor.png',
       icon: <Factory size={20} />,
     },
