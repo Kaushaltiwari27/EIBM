@@ -197,11 +197,19 @@ export const About: React.FC = () => {
               <div className="absolute -inset-1 rounded-[2.5rem] bg-gradient-to-tr from-eibm-sky via-eibm-royal to-transparent opacity-30 blur-lg group-hover:opacity-50 transition duration-500" />
               
               <div className="relative liquid-glass p-3 rounded-[2.5rem] bg-white/40 backdrop-blur-xl border border-white/40 shadow-xl overflow-hidden">
-                <img 
-                  src="/images/ceo.png" 
-                  alt="Satish Hirpara - CEO & Founder" 
-                  className="rounded-[2rem] w-full h-[400px] object-cover hover:scale-[1.02] transition-transform duration-500"
-                />
+                <picture className="w-full h-[400px] block">
+                  <source srcSet="/images/ceo.webp" type="image/webp" />
+                  <img 
+                    src="/images/ceo.png" 
+                    alt="Satish Hirpara - CEO & Founder" 
+                    loading="eager"
+                    fetchPriority="high"
+                    decoding="async"
+                    width="400"
+                    height="400"
+                    className="rounded-[2rem] w-full h-[400px] object-cover hover:scale-[1.02] transition-transform duration-500 will-change-transform"
+                  />
+                </picture>
               </div>
             </div>
           </div>
